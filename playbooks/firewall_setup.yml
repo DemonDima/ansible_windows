@@ -1,0 +1,30 @@
+---
+- name: Windows firewall setup playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Firewall rule to allow ICMP v4 echo (ping)
+      community.windows.win_firewall_rule:
+        name: ICMP Allow incoming V4 echo request
+        enabled: yes
+        state: present
+        profiles: private
+        action: allow
+        direction: in
+        protocol: icmpv4
+        icmp_type_code:
+          - '8:*'
+
+    - name: Firewall rule to allow RDP on TCP port 3389
+      community.windows.win_firewall_rule:
+        name: Remote Desktop
+        localport: 3389
+        action: allow
+        direction: in
+        protocol: tcp
+        profiles: private
+        state: present
+        enabled: yes
+
+

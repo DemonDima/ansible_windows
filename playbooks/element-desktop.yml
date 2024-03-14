@@ -1,0 +1,10 @@
+---
+- name: Windows install soft playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Install element-desktopy 
+      win_chocolatey:
+        name: element-desktop
+        state: present

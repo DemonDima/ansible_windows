@@ -1,0 +1,465 @@
+---
+- name: Windows firewall block groups playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+#    - name: Firewall rule to allow ICMP v4 echo (ping)
+#      community.windows.win_firewall_rule:
+#        name: 
+#        enabled: no
+#        group: "Функция \"Передать на устройство\""
+#        state: absent
+#        state: present
+#        profiles: private
+#        action: allow
+#        direction: in
+
+#    - name: Firewall rule to allow RDP on TCP port 3389
+#      community.windows.win_firewall_rule:
+#        name: Remote Desktop
+#        localport: 3389
+#        action: allow
+#        direction: in
+#        protocol: tcp
+#        profiles: private
+#        state: present
+#        enabled: yes
+    - name: Disable Rule Group Функция "Передать на устройство" 
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Функция "Передать на устройство"'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Учетная запись компании или учебного заведения
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Учетная запись компании или учебного заведения'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Учетная запись компании или учебного заведения
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Учетная запись компании или учебного заведения'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Управление виртуальными смарт-картами доверенного платформенного модуля
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Управление виртуальными смарт-картами доверенного платформенного модуля'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленный мониторинг событий
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленный мониторинг событий'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление томами
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление томами'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление службой
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление службой'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление назначенными задачами
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление назначенными задачами'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление журналом событий
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление журналом событий'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление брандмауэром Защитника Windows
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление брандмауэром Защитника Windows'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное управление Windows (режим совместимости)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление Windows (режим совместимости)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+#    - name: Disable Rule Group Удаленное управление Windows
+#      win_shell: |
+#        Disable-NetFirewallRule -DisplayGroup 'Удаленное управление Windows'
+#      register: command_output
+#    - name: command output
+#      ansible.builtin.debug:
+#        var: command_output.stdout_lines
+
+    - name: Add IP to Rule Удаленное управление Windows (HTTP - входящий трафик)
+      win_shell: |
+        $ips = @("192.168.24.12", "185.197.161.44", "82.146.35.177", "185.12.95.226") 
+        Get-NetFirewallrule -DisplayName 'Удаленное управление Windows (HTTP - входящий трафик)' | Set-NetFirewallRule -RemoteAddress $ips
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное завершение работы
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное завершение работы'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Удаленное администрирование COM+
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Удаленное администрирование COM+'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Служба управления ключами
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Служба управления ключами'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Служба общего доступа к проигрывателю Windows Media по сети (Интернет)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Служба общего доступа к проигрывателю Windows Media по сети (Интернет)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Служба общего доступа к проигрывателю Windows Media по сети
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Служба общего доступа к проигрывателю Windows Media по сети'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Служба входа в сеть
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Служба входа в сеть'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Служба iSCSI
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Служба iSCSI'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Сервер протоколов DIAL
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Сервер протоколов DIAL'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Проигрыватель Windows Media
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Проигрыватель Windows Media'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Подсистема балансировки нагрузки программного обеспечения
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Подсистема балансировки нагрузки программного обеспечения'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Основы сетей
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Основы сетей'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Оптимизация доставки
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Оптимизация доставки'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Общий доступ к файлам и принтерам через SMBDirect
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Общий доступ к файлам и принтерам через SMBDirect'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+# Включить Общий доступ к файлам и принтерам (эхо-запрос - входящий трафик ICMPv4)
+    - name: Disable Rule Group Общий доступ к файлам и принтерам
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Общий доступ к файлам и принтерам'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Add IP to Rule Общий доступ к файлам и принтерам (эхо-запрос - входящий трафик ICMPv4)
+      win_shell: |
+        $ips = @("192.168.24.12", "185.197.161.44", "82.146.35.177", "185.12.95.226") 
+        Get-NetFirewallrule -DisplayName 'Общий доступ к файлам и принтерам (эхо-запрос - входящий трафик ICMPv4)' | Set-NetFirewallRule -RemoteAddress $ips
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Enable Rule Общий доступ к файлам и принтерам (эхо-запрос - входящий трафик ICMPv4)
+      win_shell: |
+        Enable-NetFirewallRule -DisplayName 'Общий доступ к файлам и принтерам (эхо-запрос - входящий трафик ICMPv4)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Обнаружение сети
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Обнаружение сети'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Наблюдение за виртуальной машиной
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Наблюдение за виртуальной машиной'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Маршрутизация и удаленный доступ
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Маршрутизация и удаленный доступ'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Маршрутизатор AllJoyn
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Маршрутизатор AllJoyn'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Ловушка SNMP
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Ловушка SNMP'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Кортана
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Кортана'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Координатор распределенных транзакций
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Координатор распределенных транзакций'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Инструментарий управления Windows (WMI)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Инструментарий управления Windows (WMI)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Журналы и оповещения производительности
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Журналы и оповещения производительности'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Доступ к сети COM+
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Доступ к сети COM+'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+# Удаленный рабочий стол — пользовательский режим (входящий трафик TCP)
+# Удаленный рабочий стол — теневая копия (TCP — входящий трафик)
+    - name: Disable Rule Group Дистанционное управление рабочим столом
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Дистанционное управление рабочим столом'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Add IP to Rule Удаленный рабочий стол — теневая копия (TCP — входящий трафик)
+      win_shell: |
+        $ips = @("192.168.24.12", "185.197.161.44", "82.146.35.177", "185.12.95.226") 
+        Get-NetFirewallrule -DisplayName 'Удаленный рабочий стол — теневая копия (TCP — входящий трафик)' | Set-NetFirewallRule -RemoteAddress $ips
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Enable Rule Удаленный рабочий стол — теневая копия (TCP — входящий трафик)
+      win_shell: |
+        Enable-NetFirewallRule -DisplayName 'Удаленный рабочий стол — теневая копия (TCP — входящий трафик)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Enable Rule Удаленный рабочий стол — пользовательский режим (входящий трафик TCP)
+      win_shell: |
+        Enable-NetFirewallRule -DisplayName 'Удаленный рабочий стол — пользовательский режим (входящий трафик TCP)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:  
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Веб-средство просмотра классических приложений
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Веб-средство просмотра классических приложений'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Веб-доступ к удаленным рабочим столам (WebSocket)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Веб-доступ к удаленным рабочим столам (WebSocket)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Ваша учетная запись
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Ваша учетная запись'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Безопасность Windows
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Безопасность Windows'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Secure Socket Tunneling Protocol
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Secure Socket Tunneling Protocol'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Microsoft Edge
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Microsoft Edge'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group mDNS
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'mDNS'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Google Chrome
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'Google Chrome'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group  BranchCache - сервер размещенного кэша (используется HTTPS)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'BranchCache - Hosted Cache Server (Uses HTTPS)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Secure BranchCache - получение содержимого (использует HTTP)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'BranchCache - Content Retrieval (Uses HTTP)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Disable Rule Group Secure BranchCache - обнаружение кэширующих узлов (использует WSD)
+      win_shell: |
+        Disable-NetFirewallRule -DisplayGroup 'BranchCache - Peer Discovery (Uses WSD)'
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+

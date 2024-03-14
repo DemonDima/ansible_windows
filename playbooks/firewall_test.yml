@@ -1,0 +1,14 @@
+---
+- name: Windows firewall block groups playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Add IP to Rule Удаленное управление Windows (HTTP - входящий трафик)
+      win_shell: |
+        $ips = @("192.168.24.12", "185.197.161.44", "82.146.35.177", "185.12.95.226") 
+        Get-NetFirewallrule -DisplayName 'Удаленное управление Windows (HTTP - входящий трафик)' | Set-NetFirewallRule -RemoteAddress $ips
+      register: command_output
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines

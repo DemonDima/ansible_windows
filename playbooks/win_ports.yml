@@ -1,0 +1,19 @@
+---
+- name: Windows ports playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Recopilate ports facts
+      community.windows.win_listen_ports_facts:
+
+    - name: Retrieve only ports with Closing and Established states
+      community.windows.win_listen_ports_facts:
+        tcp_filter:
+            - Closing
+            - Established
+
+    - name: Get ports facts with only the year within the date field
+      community.windows.win_listen_ports_facts:
+        date_format: '%Y'
+

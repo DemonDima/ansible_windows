@@ -1,0 +1,6 @@
+---
+- name: Copy a single file, but keep a backup
+  ansible.windows.win_copy:
+    src: templates/ibases.v8i_all
+    dest: C:\ProgramData\1C\1CEStart\ibases.v8i
+    backup: yes

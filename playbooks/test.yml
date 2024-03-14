@@ -1,0 +1,10 @@
+---
+- name: Windows install soft playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Install Notepad++
+      win_chocolatey:
+        name: notepadplusplus
+        state: present

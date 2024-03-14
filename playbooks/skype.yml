@@ -1,0 +1,10 @@
+---
+- name: Windows install software
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Install skype
+      win_chocolatey:
+        name: skype
+        state: present

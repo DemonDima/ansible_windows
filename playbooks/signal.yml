@@ -1,0 +1,10 @@
+---
+- name: Windows install soft  playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Install Signal desktop
+      win_chocolatey:
+        name: signal.portable
+        state: present

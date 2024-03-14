@@ -1,0 +1,10 @@
+---
+- name: Windows install soft  playbook
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Upgrade installed packages
+      win_chocolatey:
+        name: all
+        state: latest
